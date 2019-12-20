@@ -40,10 +40,14 @@
  *  Is susceptible to effect by extended BLE communication. 
  */
 #define RESET_TIMER_INTERRUPT_FLAG      (TCA0.SINGLE.INTFLAGS = 1)
+/** MACRO used to configure the application used buffer sizes.
+ *  This is used by the application for communication buffers.
+ */
+#define MAX_BUFFER_SIZE                 (80)
 
-static char statusBuffer[80];
-static char lightBlueSerial[80];
-static uint8_t serialIndex;
+static char statusBuffer[MAX_BUFFER_SIZE];      /**< Status Buffer instance passed to RN487X drive used for Asynchronous Message Handling (see *asyncBuffer in rn487x.c) */
+static char lightBlueSerial[MAX_BUFFER_SIZE];   /**< Message Buffer used for CDC Serial communication when connected. Terminated by \r, \n, MAX character Passes messages to BLE for transmisison. */
+static uint8_t serialIndex;                     /**< Local index value for serial communication buffer. */
 
 /*
     Main application

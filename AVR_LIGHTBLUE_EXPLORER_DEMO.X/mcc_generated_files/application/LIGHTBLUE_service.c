@@ -43,7 +43,7 @@
  \return MASKED (4) bit value \n
  \retval MASKED lower Nibble Character \n
 */
-#define Hex(x)                      _hex[(x) & 0xF]
+#define Hex(x)                      (_hex[(x) & 0xF])
 /**
 \ingroup LIGHTBLUE
 \def Ascii2Decimal(c) 
@@ -78,7 +78,7 @@
  LightBlue Application Packets. \n
  \return void \n
 */
-#define START_BYTE                  '['
+#define START_BYTE                  ('[')
 /**
 \ingroup LIGHTBLUE
 \def TERMINATION_BYTE
@@ -86,7 +86,7 @@
  LightBlue Application Packets. \n
  \return void \n
 */
-#define TERMINATION_BYTE            ']'
+#define TERMINATION_BYTE            (']')
 /**
 \ingroup LIGHTBLUE
 \def ErrorLedOn
@@ -232,22 +232,6 @@ This function is used to return ERROR LED status as the END-DEVICE knows it mask
  \retval Status 0 (OFF) | 1 (ON) \n
  */
 static uint8_t LIGHTBLUE_GetErrorLedValue(void);
-/**
- \ingroup LIGHTBLUE
- \brief  Private function used to request action from the RN487X module \n
-This function is used to enter device into Command Mode, Update GPIO State, and return to Data Mode.
- \param[in] value - bool Set ERROR LED State as ON  \n
- \return null \n
- */
-static void LIGHTBLUE_SetErrorLedValue(bool value);
-/**
- \ingroup LIGHTBLUE
- \brief  Private function used process requested actions from the Light Blue application \n
-This function is used to update the state of the ERROR LED which is controlled via the
- * RN487X through the GPIO command on the PIC platform. On the AVR board this is MCU (LAT) controlled.
- \return null \n
- */
-static void LIGHTBLUE_UpdateErrorLed(void);
 /**
  \ingroup LIGHTBLUE
  \brief  Private function used process requested actions from the Light Blue application \n

@@ -37,11 +37,13 @@
 
 uint8_t cmdBuf[64]; /**< Command TX Buffer */
 
-static char *buffer;
-static uint8_t bufSize;
-static char *pHead;
-static uint8_t peek = 0;
-static bool dataReady = false;
+const char * const rn487x_driver_version = "1.0.0"; /**<  Current RN487X Driver Version */
+
+static char *asyncBuffer; /**< Async Message Buffer */
+static uint8_t asyncBufferSize; /**< Size of the Async Message Buffer */
+static char *pHead; /**< Pointer to the Head of the Async Message Buffer */
+static uint8_t peek = 0; /**< Recieved Non-Status Message Data */
+static bool dataReady = false; /**< Flag which indicates whether Non-Status Message Data is ready */
 
 /**
  * \brief This function filters status messages from RN487X data.
@@ -330,8 +332,8 @@ bool RN487X_SetAsyncMessageHandler(char* pBuffer, uint8_t len)
 {
     if ((pBuffer != NULL) && (len > 1))
     {
-      buffer = pBuffer;
-      bufSize = len - 1;
+      asyncBuffer = pBuffer;
+      asyncBufferSize = len - 1;
       return true;
     }
     else
@@ -373,9 +375,9 @@ static bool RN487X_FilterData(void)
         {
             asyncBuffering = false;
             *pHead = '\0';
-            RN487X.AsyncHandler(buffer);
+            RN487X.AsyncHandler(asyncBuffer);
         }
-        else if (pHead < buffer + bufSize)
+        else if (pHead < asyncBuffer + asyncBufferSize)
         {
             *pHead++ = readChar;
         }
@@ -385,7 +387,7 @@ static bool RN487X_FilterData(void)
         if (readChar == STATUS_MESSAGE_DELIMITER)
         {
             asyncBuffering = true;
-            pHead = buffer;
+            pHead = asyncBuffer;
         }
         else 
         {
