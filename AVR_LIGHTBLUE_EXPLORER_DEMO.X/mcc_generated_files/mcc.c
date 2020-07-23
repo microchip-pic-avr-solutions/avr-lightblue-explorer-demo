@@ -1,3 +1,12 @@
+/**
+  @Company
+    Microchip Technology Inc.
+
+  @Description
+    This Source file provides APIs.
+    Generation Information :
+    Driver Version    :   1.0.0
+*/
 /*
     (c) 2018 Microchip Technology Inc. and its subsidiaries. 
     
@@ -21,6 +30,7 @@
     SOFTWARE.
 */
 
+
 #include "mcc.h"
 
 /**
@@ -33,8 +43,8 @@ void SYSTEM_Initialize(void)
     WDT_Initialize();
     SLPCTRL_Initialize();
     CLKCTRL_Initialize();
-    SPI0_Initialize();
     I2C0_Initialize();
+    SPI0_Initialize();
     TCA0_Initialize();
     USART2_Initialize();
     CPUINT_Initialize();

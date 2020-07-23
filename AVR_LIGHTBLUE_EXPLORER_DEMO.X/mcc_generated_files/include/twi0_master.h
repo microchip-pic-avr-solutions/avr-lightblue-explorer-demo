@@ -1,3 +1,12 @@
+/**
+  @Company
+    Microchip Technology Inc.
+
+  @Description
+    This Source file provides APIs.
+    Generation Information :
+    Driver Version    :   1.0.0
+*/
 /*
     (c) 2018 Microchip Technology Inc. and its subsidiaries. 
     
@@ -21,6 +30,7 @@
     SOFTWARE.
 */
 
+
 #ifndef TWI0_MASTER_H
 #define TWI0_MASTER_H
 
@@ -38,14 +48,14 @@ extern "C" {
 
 
 typedef enum {
-	I2C_NOERR, // The message was sent.
-	I2C_BUSY,  // Message was NOT sent, bus was busy.
-	I2C_FAIL   // Message was NOT sent, bus failure
+	I2C0_NOERR,  // The message was sent.
+        I2C0_BUSY,   // Message was NOT sent, bus was busy.
+        I2C0_FAIL   // Message was NOT sent, bus failure
 	           // If you are interested in the failure reason,
 	           // Sit on the event call-backs.
 } twi0_error_t;
 
-typedef enum { I2C_STOP = 1, I2C_RESTART_READ, I2C_RESTART_WRITE, I2C_CONTINUE, I2C_RESET_LINK } twi0_operations_t;
+typedef enum { I2C0_STOP = 1, I2C0_RESTART_READ, I2C0_RESTART_WRITE, I2C0_CONTINUE, I2C0_RESET_LINK } twi0_operations_t;
 
 typedef twi0_operations_t (*twi0_callback_t)(void *funPtr);
 

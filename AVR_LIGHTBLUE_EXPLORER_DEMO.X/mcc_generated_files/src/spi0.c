@@ -1,3 +1,12 @@
+/**
+  @Company
+    Microchip Technology Inc.
+
+  @Description
+    This Source file provides APIs.
+    Generation Information :
+    Driver Version    :   1.0.0
+*/
 /*
     (c) 2018 Microchip Technology Inc. and its subsidiaries. 
     
@@ -20,6 +29,7 @@
     OF FEES, IF ANY, THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS 
     SOFTWARE.
 */
+
 
 #include "../include/spi0.h"
 #include "../include/pin_manager.h"
@@ -46,7 +56,7 @@ uint8_t SPI0_Initialize()
     //RXCIE disabled; TXCIE disabled; DREIE disabled; SSIE disabled; IE disabled; 
     SPI0.INTCTRL = 0x00;
 
-    spi0_desc.status = SPI_FREE;
+    spi0_desc.status = SPI0_FREE;
 
     //RXCIF disabled; IF disabled; TXCIF disabled; WRCOL disabled; DREIF disabled; SSIF disabled; BUFOVF disabled; 
     SPI0.INTFLAGS = 0x00;
@@ -70,8 +80,8 @@ bool SPI0_OpenConfiguration(uint8_t spiUniqueConfiguration){
 
 bool SPI0_Open(spi0_configuration_t spiUniqueConfiguration)
 {
-    if (spi0_desc.status == SPI_FREE) {
-        spi0_desc.status = SPI_IDLE;
+    if (spi0_desc.status == SPI0_FREE) {
+        spi0_desc.status = SPI0_IDLE;
         SPI0.CTRLA                = spiUniqueConfiguration.CTRLAvalue;
         SPI0.CTRLB                = spiUniqueConfiguration.CTRLBvalue;
         return true;
@@ -82,20 +92,23 @@ bool SPI0_Open(spi0_configuration_t spiUniqueConfiguration)
 
 void SPI0_Close(void)
 {
-    spi0_desc.status = SPI_FREE;
+    spi0_desc.status = SPI0_FREE;
 }
 
 uint8_t SPI0_ExchangeByte(uint8_t data)
 {
     SPI0.DATA = data;
-    while (!(SPI0.INTFLAGS & SPI_RXCIF_bm))
-        ;
+    while (!(SPI0.INTFLAGS & SPI_RXCIF_bm));
     return SPI0.DATA;
 }
 
 bool SPI0_Selected()
 {
-    return (!PA7_GetValue());
+/**
+ * \brief returns true if SS pin is selected 
+ * TODO: Place your code
+ */
+return true;
 }
 
 uint8_t SPI0_GetRxData()

@@ -1,3 +1,12 @@
+/**
+  @Company
+    Microchip Technology Inc.
+
+  @Description
+    This Source file provides APIs.
+    Generation Information :
+    Driver Version    :   1.0.0
+*/
 /*
     (c) 2018 Microchip Technology Inc. and its subsidiaries. 
     
@@ -21,6 +30,7 @@
     SOFTWARE.
 */
 
+
 #ifndef RSTCTRL_INCLUDED
 #define RSTCTRL_INCLUDED
 
@@ -32,8 +42,9 @@ extern "C" {
 
 static inline void RSTCTRL_reset(void)
 {
-	/* SWRR is protected with CCP */
-//	ccp_write_io((void *)&RSTCTRL.SWRR, 0x1);
+    /* SWRR is protected with CCP */
+        ccp_write_io((void *)&RSTCTRL.SWRR, 0x0);
+
 }
 
 static inline uint8_t RSTCTRL_get_reset_cause(void)

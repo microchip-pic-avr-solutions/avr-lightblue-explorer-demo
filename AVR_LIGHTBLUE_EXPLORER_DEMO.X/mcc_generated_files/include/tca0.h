@@ -1,3 +1,12 @@
+/**
+  @Company
+    Microchip Technology Inc.
+
+  @Description
+    This Source file provides APIs.
+    Generation Information :
+    Driver Version    :   1.0.0
+*/
 /*
     (c) 2018 Microchip Technology Inc. and its subsidiaries. 
     
@@ -21,8 +30,9 @@
     SOFTWARE.
 */
 
-#ifndef TCA_H_INCLUDED
-#define TCA_H_INCLUDED
+
+#ifndef TCA0_H_INCLUDED
+#define TCA0_H_INCLUDED
 
 #include "../utils/compiler.h"
 
@@ -53,4 +63,4 @@ bool TCA0_IsOverflowInterruptEnabled(void);
 }
 #endif
 
-#endif /* TCA_H_INCLUDED */
+#endif /* TCA0_H_INCLUDED */

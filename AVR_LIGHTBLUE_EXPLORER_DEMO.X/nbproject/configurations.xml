@@ -27,14 +27,14 @@
           <itemPath>mcc_generated_files/include/cpuint.h</itemPath>
           <itemPath>mcc_generated_files/include/port.h</itemPath>
           <itemPath>mcc_generated_files/include/twi0_master.h</itemPath>
+          <itemPath>mcc_generated_files/include/tca0.h</itemPath>
           <itemPath>mcc_generated_files/include/pin_manager.h</itemPath>
           <itemPath>mcc_generated_files/include/ccp.h</itemPath>
           <itemPath>mcc_generated_files/include/rstctrl.h</itemPath>
+          <itemPath>mcc_generated_files/include/spi0.h</itemPath>
           <itemPath>mcc_generated_files/include/usart0.h</itemPath>
           <itemPath>mcc_generated_files/include/usart2.h</itemPath>
           <itemPath>mcc_generated_files/include/protected_io.h</itemPath>
-          <itemPath>mcc_generated_files/include/spi0.h</itemPath>
-          <itemPath>mcc_generated_files/include/tca0.h</itemPath>
         </logicalFolder>
         <logicalFolder name="f3" displayName="rn487x" projectFiles="true">
           <itemPath>mcc_generated_files/rn4870-1-ble-module/rn487x.h</itemPath>
@@ -52,8 +52,8 @@
           <itemPath>mcc_generated_files/utils/assembler.h</itemPath>
           <itemPath>mcc_generated_files/utils/atomic.h</itemPath>
         </logicalFolder>
-        <itemPath>mcc_generated_files/mcc.h</itemPath>
         <itemPath>mcc_generated_files/delay.h</itemPath>
+        <itemPath>mcc_generated_files/mcc.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
@@ -73,8 +73,8 @@
         </logicalFolder>
         <logicalFolder name="drivers" displayName="drivers" projectFiles="true">
           <itemPath>mcc_generated_files/drivers/i2c_simple_master.c</itemPath>
-          <itemPath>mcc_generated_files/drivers/uart.c</itemPath>
           <itemPath>mcc_generated_files/drivers/spi_master.c</itemPath>
+          <itemPath>mcc_generated_files/drivers/uart.c</itemPath>
         </logicalFolder>
         <logicalFolder name="examples" displayName="examples" projectFiles="true">
           <itemPath>mcc_generated_files/examples/twi0_master_example.c</itemPath>
@@ -86,16 +86,16 @@
         <logicalFolder name="src" displayName="src" projectFiles="true">
           <itemPath>mcc_generated_files/src/pin_manager.c</itemPath>
           <itemPath>mcc_generated_files/src/cpuint.c</itemPath>
+          <itemPath>mcc_generated_files/src/spi0.c</itemPath>
           <itemPath>mcc_generated_files/src/twi0_master.c</itemPath>
           <itemPath>mcc_generated_files/src/protected_io.S</itemPath>
           <itemPath>mcc_generated_files/src/usart0.c</itemPath>
           <itemPath>mcc_generated_files/src/usart2.c</itemPath>
-          <itemPath>mcc_generated_files/src/spi0.c</itemPath>
           <itemPath>mcc_generated_files/src/tca0.c</itemPath>
         </logicalFolder>
         <itemPath>mcc_generated_files/mcc.c</itemPath>
-        <itemPath>mcc_generated_files/device_config.c</itemPath>
         <itemPath>mcc_generated_files/delay.c</itemPath>
+        <itemPath>mcc_generated_files/device_config.c</itemPath>
       </logicalFolder>
       <itemPath>main.c</itemPath>
     </logicalFolder>
@@ -123,12 +123,14 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>nEdbgTool</platformTool>
         <languageToolchain>XC8</languageToolchain>
-        <languageToolchainVersion>2.10</languageToolchainVersion>
-        <platform>3</platform>
+        <languageToolchainVersion>2.20</languageToolchainVersion>
+        <platform>4</platform>
       </toolsSet>
       <packs>
-        <pack name="ATmega_DFP" vendor="Microchip" version="2.0.12"/>
+        <pack name="ATmega_DFP" vendor="Microchip" version="2.2.108"/>
       </packs>
+      <ScriptingSettings>
+      </ScriptingSettings>
       <compileType>
         <linkerTool>
           <linkerLibItems>
@@ -156,6 +158,7 @@
       <HI-TECH-COMP>
         <property key="additional-warnings" value="true"/>
         <property key="asmlist" value="true"/>
+        <property key="call-prologues" value="false"/>
         <property key="default-bitfield-type" value="true"/>
         <property key="default-char-type" value="true"/>
         <property key="define-macros" value="AVR_DEVICE"/>
@@ -241,6 +244,7 @@
         <property key="gcc-opt-std" value="-std=c99"/>
         <property key="gcc-output-file-format" value="dwarf-3"/>
         <property key="omit-pack-options" value="false"/>
+        <property key="omit-pack-options-new" value="1"/>
         <property key="output-file-format" value="-mcof,+elf"/>
         <property key="stack-size-high" value="auto"/>
         <property key="stack-size-low" value="auto"/>
@@ -256,6 +260,8 @@
         <property key="debugoptions.useswbreakpoints" value="true"/>
         <property key="firmware.path"
                   value="Press to browse for a specific firmware version"/>
+        <property key="firmware.toolpack"
+                  value="Press to select which tool pack to use"/>
         <property key="firmware.update.action" value="firmware.update.use.latest"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>
@@ -281,6 +287,10 @@
         <property key="programoptions.preserveprogramrange" value="false"/>
         <property key="programoptions.preserveuserid" value="false"/>
         <property key="programoptions.programuserotp" value="false"/>
+        <property key="toolpack.updateoptions"
+                  value="toolpack.updateoptions.uselatestoolpack"/>
+        <property key="toolpack.updateoptions.packversion"
+                  value="Press to select which tool pack to use"/>
         <property key="voltagevalue" value=""/>
       </nEdbgTool>
     </conf>

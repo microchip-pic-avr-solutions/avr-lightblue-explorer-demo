@@ -1,3 +1,12 @@
+/**
+  @Company
+    Microchip Technology Inc.
+
+  @Description
+    This Source file provides APIs.
+    Generation Information :
+    Driver Version    :   1.0.0
+*/
 /*
     (c) 2018 Microchip Technology Inc. and its subsidiaries. 
     
@@ -20,6 +29,7 @@
     OF FEES, IF ANY, THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS 
     SOFTWARE.
 */
+
 #ifndef PINS_H_INCLUDED
 #define PINS_H_INCLUDED
 
@@ -188,23 +198,23 @@
 #define PF0_DisableDigitalInputBuffer() do { PORTF.PIN0CTRL = (PORTF.PIN0CTRL & ~PORT_ISC_gm) | 0x4 ; } while(0)
 #define PF0_EnableInterruptForLowLevelSensing() do { PORTF.PIN0CTRL = (PORTF.PIN0CTRL & ~PORT_ISC_gm) | 0x5 ; } while(0)
 
-//get/set SW0 aliases
-#define SW0_SetHigh() do { PORTF_OUTSET = 0x8; } while(0)
-#define SW0_SetLow() do { PORTF_OUTCLR = 0x8; } while(0)
-#define SW0_Toggle() do { PORTF_OUTTGL = 0x8; } while(0)
-#define SW0_GetValue() (VPORTF.IN & (0x1 << 3))
-#define SW0_SetDigitalInput() do { PORTF_DIRCLR = 0x8; } while(0)
-#define SW0_SetDigitalOutput() do { PORTF_DIRSET = 0x8; } while(0)
-#define SW0_SetPullUp() do { PORTF_PIN3CTRL  |= PORT_PULLUPEN_bm; } while(0)
-#define SW0_ResetPullUp() do { PORTF_PIN3CTRL  &= ~PORT_PULLUPEN_bm; } while(0)
-#define SW0_SetInverted() do { PORTF_PIN3CTRL  |= PORT_INVEN_bm; } while(0)
-#define SW0_ResetInverted() do { PORTF_PIN3CTRL  &= ~PORT_INVEN_bm; } while(0)
-#define SW0_DisableInterruptOnChange() do { PORTF.PIN3CTRL = (PORTF.PIN3CTRL & ~PORT_ISC_gm) | 0x0 ; } while(0)
-#define SW0_EnableInterruptForBothEdges() do { PORTF.PIN3CTRL = (PORTF.PIN3CTRL & ~PORT_ISC_gm) | 0x1 ; } while(0)
-#define SW0_EnableInterruptForRisingEdge() do { PORTF.PIN3CTRL = (PORTF.PIN3CTRL & ~PORT_ISC_gm) | 0x2 ; } while(0)
-#define SW0_EnableInterruptForFallingEdge() do { PORTF.PIN3CTRL = (PORTF.PIN3CTRL & ~PORT_ISC_gm) | 0x3 ; } while(0)
-#define SW0_DisableDigitalInputBuffer() do { PORTF.PIN3CTRL = (PORTF.PIN3CTRL & ~PORT_ISC_gm) | 0x4 ; } while(0)
-#define SW0_EnableInterruptForLowLevelSensing() do { PORTF.PIN3CTRL = (PORTF.PIN3CTRL & ~PORT_ISC_gm) | 0x5 ; } while(0)
+//get/set BT_MODE aliases
+#define BT_MODE_SetHigh() do { PORTF_OUTSET = 0x8; } while(0)
+#define BT_MODE_SetLow() do { PORTF_OUTCLR = 0x8; } while(0)
+#define BT_MODE_Toggle() do { PORTF_OUTTGL = 0x8; } while(0)
+#define BT_MODE_GetValue() (VPORTF.IN & (0x1 << 3))
+#define BT_MODE_SetDigitalInput() do { PORTF_DIRCLR = 0x8; } while(0)
+#define BT_MODE_SetDigitalOutput() do { PORTF_DIRSET = 0x8; } while(0)
+#define BT_MODE_SetPullUp() do { PORTF_PIN3CTRL  |= PORT_PULLUPEN_bm; } while(0)
+#define BT_MODE_ResetPullUp() do { PORTF_PIN3CTRL  &= ~PORT_PULLUPEN_bm; } while(0)
+#define BT_MODE_SetInverted() do { PORTF_PIN3CTRL  |= PORT_INVEN_bm; } while(0)
+#define BT_MODE_ResetInverted() do { PORTF_PIN3CTRL  &= ~PORT_INVEN_bm; } while(0)
+#define BT_MODE_DisableInterruptOnChange() do { PORTF.PIN3CTRL = (PORTF.PIN3CTRL & ~PORT_ISC_gm) | 0x0 ; } while(0)
+#define BT_MODE_EnableInterruptForBothEdges() do { PORTF.PIN3CTRL = (PORTF.PIN3CTRL & ~PORT_ISC_gm) | 0x1 ; } while(0)
+#define BT_MODE_EnableInterruptForRisingEdge() do { PORTF.PIN3CTRL = (PORTF.PIN3CTRL & ~PORT_ISC_gm) | 0x2 ; } while(0)
+#define BT_MODE_EnableInterruptForFallingEdge() do { PORTF.PIN3CTRL = (PORTF.PIN3CTRL & ~PORT_ISC_gm) | 0x3 ; } while(0)
+#define BT_MODE_DisableDigitalInputBuffer() do { PORTF.PIN3CTRL = (PORTF.PIN3CTRL & ~PORT_ISC_gm) | 0x4 ; } while(0)
+#define BT_MODE_EnableInterruptForLowLevelSensing() do { PORTF.PIN3CTRL = (PORTF.PIN3CTRL & ~PORT_ISC_gm) | 0x5 ; } while(0)
 
 //get/set PC0 aliases
 #define PC0_SetHigh() do { PORTC_OUTSET = 0x1; } while(0)
@@ -405,8 +415,8 @@ void PORTF_PF1_DefaultInterruptHandler(void);
 void PORTF_PF1_SetInterruptHandler(void (* interruptHandler)(void)) ;
 void PORTF_PF0_DefaultInterruptHandler(void);
 void PORTF_PF0_SetInterruptHandler(void (* interruptHandler)(void)) ;
-void PORTF_SW0_DefaultInterruptHandler(void);
-void PORTF_SW0_SetInterruptHandler(void (* interruptHandler)(void)) ;
+void PORTF_BT_MODE_DefaultInterruptHandler(void);
+void PORTF_BT_MODE_SetInterruptHandler(void (* interruptHandler)(void)) ;
 void PORTC_PC0_DefaultInterruptHandler(void);
 void PORTC_PC0_SetInterruptHandler(void (* interruptHandler)(void)) ;
 void PORTF_TEMP_EVENT_DefaultInterruptHandler(void);

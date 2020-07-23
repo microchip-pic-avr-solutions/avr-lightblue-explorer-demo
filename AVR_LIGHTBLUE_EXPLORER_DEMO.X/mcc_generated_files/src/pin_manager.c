@@ -1,3 +1,12 @@
+/**
+  @Company
+    Microchip Technology Inc.
+
+  @Description
+    This Source file provides APIs.
+    Generation Information :
+    Driver Version    :   1.0.0
+*/
 /*
     (c) 2018 Microchip Technology Inc. and its subsidiaries. 
     
@@ -21,6 +30,7 @@
     SOFTWARE.
 */
 
+
 #include "../include/pin_manager.h"
 static void (*PORTA_PA2_InterruptHandler)(void);
 static void (*PORTC_ACCEL_INT2_InterruptHandler)(void);
@@ -31,7 +41,7 @@ static void (*PORTA_PA6_InterruptHandler)(void);
 static void (*PORTA_PA5_InterruptHandler)(void);
 static void (*PORTF_PF1_InterruptHandler)(void);
 static void (*PORTF_PF0_InterruptHandler)(void);
-static void (*PORTF_SW0_InterruptHandler)(void);
+static void (*PORTF_BT_MODE_InterruptHandler)(void);
 static void (*PORTC_PC0_InterruptHandler)(void);
 static void (*PORTF_TEMP_EVENT_InterruptHandler)(void);
 static void (*PORTD_FLASH_CS_InterruptHandler)(void);
@@ -133,7 +143,7 @@ void PIN_MANAGER_Initialize()
     PORTA_PA5_SetInterruptHandler(PORTA_PA5_DefaultInterruptHandler);
     PORTF_PF1_SetInterruptHandler(PORTF_PF1_DefaultInterruptHandler);
     PORTF_PF0_SetInterruptHandler(PORTF_PF0_DefaultInterruptHandler);
-    PORTF_SW0_SetInterruptHandler(PORTF_SW0_DefaultInterruptHandler);
+    PORTF_BT_MODE_SetInterruptHandler(PORTF_BT_MODE_DefaultInterruptHandler);
     PORTC_PC0_SetInterruptHandler(PORTC_PC0_DefaultInterruptHandler);
     PORTF_TEMP_EVENT_SetInterruptHandler(PORTF_TEMP_EVENT_DefaultInterruptHandler);
     PORTD_FLASH_CS_SetInterruptHandler(PORTD_FLASH_CS_DefaultInterruptHandler);
@@ -297,17 +307,17 @@ void PORTF_PF0_DefaultInterruptHandler(void)
     // or set custom function using PORTF_PF0_SetInterruptHandler()
 }
 /**
-  Allows selecting an interrupt handler for PORTF_SW0 at application runtime
+  Allows selecting an interrupt handler for PORTF_BT_MODE at application runtime
 */
-void PORTF_SW0_SetInterruptHandler(void (* interruptHandler)(void)) 
+void PORTF_BT_MODE_SetInterruptHandler(void (* interruptHandler)(void)) 
 {
-    PORTF_SW0_InterruptHandler = interruptHandler;
+    PORTF_BT_MODE_InterruptHandler = interruptHandler;
 }
 
-void PORTF_SW0_DefaultInterruptHandler(void)
+void PORTF_BT_MODE_DefaultInterruptHandler(void)
 {
-    // add your PORTF_SW0 interrupt custom code
-    // or set custom function using PORTF_SW0_SetInterruptHandler()
+    // add your PORTF_BT_MODE interrupt custom code
+    // or set custom function using PORTF_BT_MODE_SetInterruptHandler()
 }
 /**
   Allows selecting an interrupt handler for PORTC_PC0 at application runtime
