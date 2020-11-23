@@ -4,7 +4,7 @@
     "content": {
         "metaDataVersion": "1.1.0",
         "name": "com.microchip.mcu8.mplabx.project.avr-lightblue-explorer-demo",
-        "version": "1.0.1",
+        "version": "1.0.2",
         "displayName": "AVR-BLE development board",
         "projectName": "avr-lightblue-explorer-demo",
         "shortDescription": "AVR-BLE Development Board using Microchip RN4870 BLE Module",
